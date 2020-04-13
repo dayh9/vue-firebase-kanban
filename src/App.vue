@@ -1,15 +1,15 @@
 <template>
-	<h1>{{ title }}</h1>
+  <div>
+    <h1>Todo App</h1>
+    <TodoApp />
+  </div>
 </template>
 
 <script>
+import Todo from "./components/TodoApp.vue";
 export default {
-	data() {
-		return {
-			title: "Hello Vue"
-		};
-	}
+  components: {
+    TodoApp: Todo
+  }
 };
 </script>
-
-<style></style>
