@@ -1,15 +1,17 @@
 <template>
   <div>
-    <h1>Todo App</h1>
-    <TodoApp />
+    <!-- <TodoApp /> -->
+    <Board />
   </div>
 </template>
 
 <script>
-import Todo from "./components/TodoApp.vue";
+// import Todo from "./components/TodoApp.vue";
+import Board from "./components/Board.vue";
 export default {
   components: {
-    TodoApp: Todo
+    // TodoApp: Todo,
+    Board: Board
   }
 };
 </script>

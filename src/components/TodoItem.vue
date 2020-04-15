@@ -1,5 +1,5 @@
 <template>
-  <div class="item" v-bind:class="{
+  <div class="todoapp-item" v-bind:class="{
       completed: item.completed
     }">
     <h2>{{item.title}}</h2>
@@ -18,11 +18,6 @@ export default {
 };
 </script>
 <style>
-.item {
-  border: 1px solid #cdcdcd;
-  margin: 8px;
-  padding: 10px;
-}
 .completed {
   opacity: 0.5;
 }
