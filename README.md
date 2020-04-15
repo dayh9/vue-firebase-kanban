@@ -2,8 +2,15 @@
 
 ## Firebase setup
 
+##### add firebase.js file with firebase (realtime database) config like this
+
 ```
-add firebase.js file with firebase config
+import firebase from 'firebase/app'
+import 'firebase/database'
+
+export const db = firebase
+  .initializeApp({ databaseURL: 'MY PROJECT URL' })
+  .database()
 ```
 
 ## Project setup
