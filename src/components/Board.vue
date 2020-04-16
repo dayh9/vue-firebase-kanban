@@ -20,9 +20,9 @@ export default {
   data() {
     return {
       columns: [
-        { id: 0, title: "Column 1" },
-        { id: 1, title: "Column 2" },
-        { id: 2, title: "Column 3" }
+        { id: 0, title: "To Do" },
+        { id: 1, title: "In Progress" },
+        { id: 2, title: "Done" }
       ]
     };
   }

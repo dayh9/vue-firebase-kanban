@@ -25,57 +25,66 @@ export default {
       todos: [
         {
           id: Math.random(),
-          title: "Podlać karl",
-          text: "centymetr na ss",
-          status: 0
+          title: "Podlać pietruszkę",
+          text: "Nalać centymetr letniej wody na dno doniczki",
+          status: 0,
+          style: "green"
         },
         {
           id: Math.random(),
-          title: "Podlać Ade",
-          text: "centymetr na ss",
-          status: 1
+          title: "Nakarmić psa",
+          text: "Podać gotowanego kurczaka",
+          status: 1,
+          style: "pink"
         },
         {
           id: Math.random(),
-          title: "Podlać lol",
+          title: "Zrobić obiad",
           text: "centymetr na ss",
-          status: 1
+          status: 1,
+          style: "green"
         },
         {
           id: Math.random(),
-          title: "Podlać ss",
+          title: "Zrobić obiad",
           text: "centymetr na ss",
-          status: 2
+          status: 1,
+          style: "green"
         },
         {
           id: Math.random(),
-          title: "Podlać kyky",
+          title: "Zrobić obiad",
           text: "centymetr na ss",
-          status: 2
+          status: 1,
+          style: "green"
         },
         {
           id: Math.random(),
-          title: "Podlać Admumue",
+          title: "Zrobić obiad",
           text: "centymetr na ss",
-          status: 2
+          status: 1,
+          style: "green"
         },
         {
           id: Math.random(),
-          title: "Podlać Admumue",
+          title: "Zrobić obiad",
           text: "centymetr na ss",
-          status: 2
+          status: 1,
+          style: "green"
         },
         {
           id: Math.random(),
-          title: "Podlać Admumue",
+          title: "Zrobić obiad",
           text: "centymetr na ss",
-          status: 2
+          status: 1,
+          style: "green"
         },
         {
           id: Math.random(),
-          title: "Podlać Admumue",
+          title: "Zrobić obiad",
           text: "centymetr na ss",
-          status: 2
+          status: 1,
+          style: "green"
         }
       ]
     };
@@ -103,10 +112,13 @@ export default {
 }
 .cards-container {
   max-height: 100%;
+  max-width: 100%;
   overflow: auto;
+  overflow-x: hidden;
 }
 .column-title {
   align-self: flex-start;
   margin: 0 10%;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 </style>
