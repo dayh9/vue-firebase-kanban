@@ -1,98 +1,117 @@
 <template>
   <div class="column">
+    <!-- <ul>
+      <li v-for="t in fbTodos" :key="t['.key']">{{t.title}}</li>
+    </ul>
+    <ul>
+      <li v-for="t in filteredFbTodos" :key="t['.key']">{{t.title}}</li>
+    </ul>-->
     <div class="column-title">
       <h3>{{column.title}}</h3>
     </div>
     <div class="cards-container">
       <!-- <Card :todo="todos[1]" /> -->
       <!-- <Card v-for="todo in todos" :key="todo.id" :todo="todo" />aa -->
-      <Card v-for="todo in filteredTodos(column.id)" :key="todo.id" :todo="todo" />
+      <Card v-for="todo in filteredFbTodos" :key="todo['.key']" :todo="todo" />
+      <!-- <Card v-for="todo in filteredTodos(column.id)" :key="todo.id" :todo="todo" /> -->
     </div>
     <!-- <p>{{todo.text}}</p> -->
   </div>
 </template>
 <script>
 import Card from "./Card";
+import { db } from "../firebase";
+
 export default {
   components: {
     Card
   },
   props: {
-    column: Object
+    column: Object,
+    todos: Array
   },
   data() {
     return {
-      todos: [
-        {
-          id: Math.random(),
-          title: "Podlać pietruszkę",
-          text: "Nalać centymetr letniej wody na dno doniczki",
-          status: 0,
-          style: "green"
-        },
-        {
-          id: Math.random(),
-          title: "Nakarmić psa",
-          text: "Podać gotowanego kurczaka",
-          status: 1,
-          style: "pink"
-        },
-        {
-          id: Math.random(),
-          title: "Zrobić obiad",
-          text: "centymetr na ss",
-          status: 1,
-          style: "green"
-        },
-        {
-          id: Math.random(),
-          title: "Zrobić obiad",
-          text: "centymetr na ss",
-          status: 1,
-          style: "green"
-        },
-        {
-          id: Math.random(),
-          title: "Zrobić obiad",
-          text: "centymetr na ss",
-          status: 1,
-          style: "green"
-        },
-        {
-          id: Math.random(),
-          title: "Zrobić obiad",
-          text: "centymetr na ss",
-          status: 1,
-          style: "green"
-        },
-        {
-          id: Math.random(),
-          title: "Zrobić obiad",
-          text: "centymetr na ss",
-          status: 1,
-          style: "green"
-        },
-        {
-          id: Math.random(),
-          title: "Zrobić obiad",
-          text: "centymetr na ss",
-          status: 1,
-          style: "green"
-        },
-        {
-          id: Math.random(),
-          title: "Zrobić obiad",
-          text: "centymetr na ss",
-          status: 1,
-          style: "green"
-        }
-      ]
+      fbTodos: []
+      // todos: [
+      //   {
+      //     id: Math.random(),
+      //     title: "Podlać pietruszkę",
+      //     text: "Nalać centymetr letniej wody na dno doniczki",
+      //     status: 0,
+      //     style: "green"
+      //   },
+      //   {
+      //     id: Math.random(),
+      //     title: "Nakarmić psa",
+      //     text: "Podać gotowanego kurczaka",
+      //     status: 1,
+      //     style: "pink"
+      //   },
+      //   {
+      //     id: Math.random(),
+      //     title: "Zrobić obiad",
+      //     text: "centymetr na ss",
+      //     status: 1,
+      //     style: "green"
+      //   },
+      //   {
+      //     id: Math.random(),
+      //     title: "Zrobić obiad",
+      //     text: "centymetr na ss",
+      //     status: 1,
+      //     style: "green"
+      //   },
+      //   {
+      //     id: Math.random(),
+      //     title: "Zrobić obiad",
+      //     text: "centymetr na ss",
+      //     status: 1,
+      //     style: "green"
+      //   },
+      //   {
+      //     id: Math.random(),
+      //     title: "Zrobić obiad",
+      //     text: "centymetr na ss",
+      //     status: 1,
+      //     style: "green"
+      //   },
+      //   {
+      //     id: Math.random(),
+      //     title: "Zrobić obiad",
+      //     text: "centymetr na ss",
+      //     status: 1,
+      //     style: "green"
+      //   },
+      //   {
+      //     id: Math.random(),
+      //     title: "Zrobić obiad",
+      //     text: "centymetr na ss",
+      //     status: 1,
+      //     style: "green"
+      //   },
+      //   {
+      //     id: Math.random(),
+      //     title: "Zrobić obiad",
+      //     text: "centymetr na ss",
+      //     status: 1,
+      //     style: "green"
+      //   }
+      // ]
     };
+  },
+  computed: {
+    filteredFbTodos() {
+      return this.fbTodos.filter(todo => todo.status === this.column.title);
+    }
   },
   methods: {
     filteredTodos(s) {
       return this.todos.filter(t => t.status === s);
     }
+  },
+  firebase: {
+    fbTodos: db.ref("todos")
   }
 };
 </script>

@@ -11,11 +11,6 @@
 export default {
   props: {
     todo: Object
-  },
-  computed: {
-    classObject: function() {
-      return {};
-    }
   }
 };
 </script>
