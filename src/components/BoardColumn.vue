@@ -1,21 +1,17 @@
 <template>
   <div class="column">
-    <!-- <ul>
-      <li v-for="t in fbTodos" :key="t['.key']">{{t.title}}</li>
-    </ul>
-    <ul>
-      <li v-for="t in filteredFbTodos" :key="t['.key']">{{t.title}}</li>
-    </ul>-->
     <div class="column-title">
       <h3>{{column.title}}</h3>
     </div>
     <div class="cards-container">
-      <!-- <Card :todo="todos[1]" /> -->
-      <!-- <Card v-for="todo in todos" :key="todo.id" :todo="todo" />aa -->
-      <Card v-for="todo in filteredFbTodos" :key="todo['.key']" :todo="todo" />
-      <!-- <Card v-for="todo in filteredTodos(column.id)" :key="todo.id" :todo="todo" /> -->
+      <Card
+        v-for="todo in filteredFbTodos"
+        :key="todo['.key']"
+        :todo="todo"
+        v-on:removeCard="removeCard(todo['.key'])"
+        v-on:changeStatus="changeStatus($event, todo['.key'], todo)"
+      />
     </div>
-    <!-- <p>{{todo.text}}</p> -->
   </div>
 </template>
 <script>
@@ -32,6 +28,7 @@ export default {
   },
   data() {
     return {
+      name: "stary tytul",
       fbTodos: []
       // todos: [
       //   {
@@ -106,8 +103,13 @@ export default {
     }
   },
   methods: {
-    filteredTodos(s) {
-      return this.todos.filter(t => t.status === s);
+    removeCard(key) {
+      this.$firebaseRefs.fbTodos.child(key).remove();
+    },
+    changeStatus(newStatus, key, oldTodo) {
+      const newTodo = { ...oldTodo };
+      newTodo.status = newStatus;
+      this.$firebaseRefs.fbTodos.child(key).set(newTodo);
     }
   },
   firebase: {
@@ -125,9 +127,6 @@ export default {
   max-height: 80vh;
   width: 300px;
   margin: 20px;
-  /* top: 30px;
-  bottom: 10px;
-  left: 10px; */
 }
 .cards-container {
   max-height: 100%;
